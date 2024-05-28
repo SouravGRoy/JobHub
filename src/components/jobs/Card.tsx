@@ -24,10 +24,12 @@ const HomeCard = ({ data }: HomeCardProps) => {
               <CardTitle className="text-sm text-slate-400">
                 {data.companyName}
               </CardTitle>
-              <p>{data.jobRole}</p>
+              <p className="uppercase font-bold">{data.jobRole}</p>
             </div>
           </div>
-          <CardTitle className="text-sm">{data.location}</CardTitle>
+          <CardTitle className="text-sm uppercase">
+            🇮🇳 {data.location}
+          </CardTitle>
         </div>
         <h1 className="text-md font-light">
           Estimated Salary :{" "}
