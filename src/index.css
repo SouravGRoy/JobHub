@@ -66,15 +66,7 @@
     }
   }
 
-  @layer base {
-    * {
-      @apply border-border;
-    }
-    body {
-      @apply bg-background text-foreground;
-     
-    }
-  }
+
 body{
   background: linear-gradient(to bottom right, #0d0d0ded, #131111, #2015c4, #0d0d0d);
   background-position: center;
@@ -96,9 +88,7 @@ body{
   left: 0;
   background: inherit;
   border-radius: inherit;
-  -webkit-mask: 
-    linear-gradient(#fff 0 0) content-box, 
-    linear-gradient(#fff 0 0);
+
   -webkit-mask-composite: destination-out;
   mask-composite: exclude; 
 }
