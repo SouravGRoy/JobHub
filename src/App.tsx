@@ -8,13 +8,14 @@ import { JobData, data } from "@/data";
 const App = () => {
   const [filteredData, setFilteredData] = useState<JobData[]>(data);
 
-  const handleFilterSubmit = (
-    selectedLocations: string[],
-    selectedRoles: string[],
-    selectedCompany: string[],
-    minPay: number,
-    minExp: number
-  ) => {
+  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
+  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
+  const [selectedCompany, setSelectedCompany] = useState<string[]>([]);
+  const [minPay, setMinPay] = useState<number>(0);
+  const [minExp, setMinExp] = useState<number>(0);
+
+  const handleFilterSubmit = () => {
+    console.log("Applying filters...");
     const newFilteredData = data.filter((job) => {
       const isLocationMatch =
         selectedLocations.length === 0 ||
@@ -37,15 +38,30 @@ const App = () => {
         isExpMatch
       );
     });
-    setFilteredData(newFilteredData);
+
+    console.log("Filtered data:", newFilteredData); // Log the filtered data
+    setFilteredData(newFilteredData); // Update state with filtered data
   };
 
   return (
     <div className="mb-4">
       <Navbar />
       <Home />
+      <Filter
+        data={data}
+        selectedLocations={selectedLocations}
+        setSelectedLocations={setSelectedLocations}
+        selectedRoles={selectedRoles}
+        setSelectedRoles={setSelectedRoles}
+        selectedCompany={selectedCompany}
+        setSelectedCompany={setSelectedCompany}
+        minPay={minPay}
+        setMinPay={setMinPay}
+        minExp={minExp}
+        setMinExp={setMinExp}
+        onSubmit={handleFilterSubmit} // Pass the onSubmit function
+      />
 
-      <Filter data={data} onFilterSubmit={handleFilterSubmit} />
       <div className="md:items-center items-center">
         <Jobs data={filteredData} />
       </div>
