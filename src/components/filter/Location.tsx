@@ -29,9 +29,7 @@ const Location = ({
 
   return (
     <div>
-      <h3 className="mb-2 font-semibold text-white dark:text-white">
-        Location
-      </h3>
+      <h3 className="mb-2 font-semibold text-white">Location</h3>
       <ul className="w-48 text-sm font-medium text-white rounded-lg dark:bg-gray-700 dark:border-gray-600">
         {uniqueLocations.map((location, index) => (
           <li className="w-full rounded-t-lg dark:border-gray-600" key={index}>
