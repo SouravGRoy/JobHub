@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -14,22 +13,33 @@ import { JobData } from "@/data";
 
 interface FilterProps {
   data: JobData[];
-  onFilterSubmit: (
-    selectedLocations: string[],
-    selectedRoles: string[],
-    selectedCompany: string[],
-    minPay: number,
-    minExp: number
-  ) => void;
+  selectedLocations: string[];
+  setSelectedLocations: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedRoles: string[];
+  setSelectedRoles: React.Dispatch<React.SetStateAction<string[]>>;
+  selectedCompany: string[];
+  setSelectedCompany: React.Dispatch<React.SetStateAction<string[]>>;
+  minPay: number;
+  setMinPay: React.Dispatch<React.SetStateAction<number>>;
+  minExp: number;
+  setMinExp: React.Dispatch<React.SetStateAction<number>>;
+  onSubmit: () => void; // Add this line
 }
 
-const Filter = ({ data, onFilterSubmit }: FilterProps) => {
-  const [selectedLocations, setSelectedLocations] = useState<string[]>([]);
-  const [selectedRoles, setSelectedRoles] = useState<string[]>([]);
-  const [selectedCompany, setSelectedCompany] = useState<string[]>([]);
-  const [minPay, setMinPay] = useState<number>(0);
-  const [minExp, setMinExp] = useState<number>(0);
-
+const Filter = ({
+  data,
+  selectedLocations,
+  setSelectedLocations,
+  selectedRoles,
+  setSelectedRoles,
+  selectedCompany,
+  setSelectedCompany,
+  minPay,
+  setMinPay,
+  minExp,
+  setMinExp,
+  onSubmit, // Use the onSubmit prop
+}: FilterProps) => {
   return (
     <div className="container flex justify-center">
       <div className="p-1 bg-blue-800 w-full rounded-md hover:shadow-lg transition duration-300">
@@ -85,25 +95,17 @@ const Filter = ({ data, onFilterSubmit }: FilterProps) => {
                         setSelectedCompany={setSelectedCompany}
                       />
                     </div>
+                    <button
+                      onClick={() => {
+                        console.log("Filter button clicked"); // Debug log
+                        onSubmit();
+                      }}
+                      className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition duration-300"
+                    >
+                      Apply Filters
+                    </button>
                   </div>
                 </div>
-              </div>
-
-              <div className="text-center mt-4">
-                <button
-                  onClick={() =>
-                    onFilterSubmit(
-                      selectedLocations,
-                      selectedRoles,
-                      selectedCompany,
-                      minPay,
-                      minExp
-                    )
-                  }
-                  className="bg-cyan-500 hover:bg-cyan-300 text-gray-100 font-semibold py-2 px-4 rounded-lg shadow-md transition duration-300"
-                >
-                  Submit
-                </button>
               </div>
             </AccordionContent>
           </AccordionItem>
