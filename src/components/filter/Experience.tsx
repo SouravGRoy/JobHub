@@ -14,7 +14,7 @@ const Experience = ({ minExp, setMinExp }: ExperienceProps) => {
   };
 
   return (
-    <div className=" border border-gray-400 hover:bg-blue-700 hover:border-blue-500 hover:shadow-lg p-2  text-gray-100  bg-blue-600 rounded-md">
+    <div className="border border-gray-400 hover:bg-blue-700 hover:border-blue-500 hover:shadow-lg p-2 text-gray-100 bg-blue-600 rounded-md">
       <label htmlFor="minExp" className="block mb-1">
         Minimum Experience
       </label>
