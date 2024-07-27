@@ -14,7 +14,7 @@ const Pay = ({ minPay, setMinPay }: PayProps) => {
   };
 
   return (
-    <div className="flex-col p-4 border border-gray-800 hover:bg-blue-700 hover:border-blue-500 hover:shadow-lg text-gray-100  bg-blue-600 rounded-md">
+    <div className="flex-col p-4 border border-gray-800 hover:bg-blue-700 hover:border-blue-500 hover:shadow-lg text-gray-100 bg-blue-600 rounded-md">
       <label className="block mb-2" htmlFor="minPay">
         Minimum Salary (in INR)
       </label>
