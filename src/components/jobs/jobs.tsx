@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import HomeCard from "./Card";
 import { JobData } from "@/data";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -10,6 +10,10 @@ interface JobsProps {
 const Jobs = ({ data }: JobsProps) => {
   const [dataSource, setDataSource] = useState(data.slice(0, 12));
   const [hasMore, setHasMore] = useState(true);
+
+  useEffect(() => {
+    setDataSource(data.slice(0, 12)); // Reset data source when data changes
+  }, [data]);
 
   const fetchMoreData = () => {
     if (dataSource.length < data.length) {
